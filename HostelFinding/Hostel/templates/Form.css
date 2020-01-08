@@ -1,0 +1,13 @@
+*
+  .order h2{
+  	color:lightgreen ;
+  	font-size: 30px;
+  }
+  .button{
+  	position: absolute;
+  	top:90%;
+  	left: 40%	
+  }
+  .button{
+      font-size: 15px;
+  }
