@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Form </title>
+</head>
+<body>
+    <form method="POST" action="save">
+        {% csrf_token %}
+        Enter name: <input name="Name" type="text" > <br>
+        Enter location : <input name="location" type="text" > <br>
+        Enter price: <input name="price" type="integer" > <br>
+        Enter picture: <input name="file" type="text" > <br>
+        Enter description:<input name="text" type="text" > <br>
+        <input type="submit">
+    </form>
+
+
+    
+</body>
+</html>
