@@ -10,6 +10,7 @@ urlpatterns =[
     path('hostel/edit/<int:ID>',hostel_edit),
     path('hostel/edit/update/<int:ID>',hostel_update_save),
     path('hostel/delete/<int:ID>',hostel_delete),
+    path('search/',search),
     path('hostel/upload/save',upload)
     
     
