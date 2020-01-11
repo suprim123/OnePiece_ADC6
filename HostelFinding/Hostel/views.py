@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Hostel
+from django.views.generic import TemplateView
+from django.core.files.storage import FileSystemStorage
 
-<<<<<<< Updated upstream
 def hostel_form(request):
     return render(request,'Hostelform.html')
 
@@ -10,75 +11,63 @@ def hostel_form(request):
 
 def hostel_save(request):
     if request.method== 'POST': 
-        
         get_Name =request.POST['Name']
         get_Location= request.POST['Location']
         get_Price =request.POST['Price']
         get_Description= request.POST['Description']
         # get_Picture = request.POST['Picture']
-        Hostel_obj = Hostel(Name=get_Name,Location=get_Location,Description=get_Description)
+        Hostel_obj = Hostel(Name=get_Name,Location=get_Location,Price=get_Price,Description=get_Description)
         Hostel_obj.save()
-=======
-
-
-def view_Booking_lists(request):
-    list_of_Hostel= Hostel.objects.all()
-    print(list_of_Hostel)
-    context_variable = {
-        'booking':list_of_Hostel
-    }
-    return render(request,.html',context_variable)
-
-def booking_form(request):
-    return render(request,'bookingform.html')
-
-
-
-def booking_save(request):
-    if request.method== 'POST': 
-        get_all =request.POST
-        get_cname =request.POST['CustomerName']
-        get_room_type= request.POST['RoomType']
-        get_room_no =request.POST['RoomNo']
-        get_cemail= request.POST['CustomerEmail']
-        get_ccontact = request.POST['CustomerContact']
-        Booking_obj = BookRoom(cname=get_cname,roomtype=get_room_type,roomno=get_room_no,cemail=get_cemail,ccontact=get_ccontact)
-        Booking_obj.save()
->>>>>>> Stashed changes
         return HttpResponse("Record saved")
     else:
         return HttpResponse("Error record saving")
 
-<<<<<<< Updated upstream
+
 def hostel_list(request):
     list_of_Hostels= Hostel.objects.all()
-    print(list_of_Hostels)
     context_variable = {
         'Hostel':list_of_Hostels
     }
     return render(request,'Hostel.html',context_variable)
-=======
-def booking_update_forms(request, ID):
 
-    print(ID)
-    book_obj = BookRoom.objects.get(id=ID)
-    print(book_obj)
+def hostel_edit(request, ID):
+    hostel_obj = Hostel.objects.get(id=ID)
     context_varible = {
-        'book':book_obj
+        'Hostel':hostel_obj
     }
-    return render(request,'bookingsupdateform.html',context_varible)
+    return render(request,'Hostelupdateform.html',context_varible)
 
-def booking_update_save(request,ID):
-    book_obj = BookRoom.objects.get(id=ID)
-    print(book_obj)
-    book_form_data = request.POST
-    print(book_form_data)
-    book_obj.cname = request.POST['CustomerName']
-    book_obj.roomtype =request.POST['RoomType']
-    book_obj.roomno = request.POST['RoomNo']
-    book_obj.cemail = request.POST['CustomerEmail']
-    book_obj.ccontact = request.POST['CustomerContact']
-    book_obj.save()
+def hostel_update_save(request,ID):
+    hostel_obj = Hostel.objects.get(id=ID)
+    hostel_form_data = request.POST
+    print(hostel_form_data) 
+    hostel_obj.Name = request.POST['Name']
+    hostel_obj.Location =request.POST['Location']
+    # hostel_obj. Picture = request.POST['Picture']
+    hostel_obj. Price = request.POST['Price']
+    hostel_obj. Description = request.POST['Description']
+    hostel_obj.save()
 
     return HttpResponse("Record Updated!!")
->>>>>>> Stashed changes
+
+
+def hostel_delete(request,ID):
+        hostel_obj= Hostel.objects.get(id=ID)
+        hostel_obj.delete()
+        return HttpResponse("Record Delete!!")
+
+def search(request):
+        hostel_id = request.GET['location']
+        print(hostel_id)
+        hostel = Hostel.objects.filter(Location__contains=hostel_id)
+        return HttpResponse("TEst")
+        #return render(request, 'hostel.html', {'hostel': hostel, 'Location': hostel_id})
+
+def upload(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        file_object = FileSystemStorage()
+        file_object.save(uploaded_file.name, uploaded_file)
+    return render(request, 'hostelform.html')
+    
+

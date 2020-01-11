@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Form </title>
+</head>
+<body>
+    <form method="POST" action="update/{{Hostel.id}}">
+        {% csrf_token %}
+        Update Name: <input name="Name" type="text" value={{hostel.Name}}> <br>
+        Update Location : <input name="Location" type="text" value={{hostel.Location}}> <br>
+        Update price: <input name="Price" type="text" value={{hostel.Price}} > <br>
+        <!-- Update Picture: <input name="Picture" type="text" value={{hostel.Picture}}> <br> --><br>
+        Update Description: <input name="Description" type="text" value={{hostel.Description}}> <br>
+        <input type="submit">
+    </form>
+
+</body>
+</html>
+

@@ -7,18 +7,40 @@
     <title>List of Hostel</title>
 </head>
 <body>
-    <h1> List of Hostel</h1>
+    <form>
+        <h1> List of Hostel</h1>
+
+
+
+        <!-- {% if error %}
+        <p style="color: red;">Please submit a search term.</p>
+    {% endif %} -->
+        <form action="search" method="get">
+            <input type="text" name="search">
+            <input type="submit" value="Search">
+        </form>
+
+
+    
     {% for hostel in Hostel %}
     Name  : {{hostel.Name}} <br>
     Location : {{hostel.Location}} <br>
     Price: {{hostel.Price}}
-    <!-- Picture : {{hostel.image}}<br>  -->
-    Description : {{hostel.Description}}
-    <!-- <a href="edit/{{hostel.name}}">Edit this</a>--> <br> 
+    <!-- Picture : {{hostel.image}}<br>  --><br>
+    Description : {{hostel.Description}}<br>
+    <a href="edit/{{hostel.id}}">Edit </a> <br> 
+    <a href="delete/{{hostel.id}}">Delete</a> <br>
+    
     
     ======================================== <br>
     {% empty %} 
     There are no any hostel.
         {% endfor %}
+        
+        
+
+        
+        
+    </form>
 </body>
 </html>
