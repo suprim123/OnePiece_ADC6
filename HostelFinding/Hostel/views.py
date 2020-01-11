@@ -55,7 +55,12 @@ def hostel_delete(request,ID):
         hostel_obj.delete()
         return HttpResponse("Record Delete!!")
 
-
+def search(request):
+        hostel_id = request.GET['location']
+        print(hostel_id)
+        hostel = Hostel.objects.filter(Location__contains=hostel_id)
+        return HttpResponse("TEst")
+        #return render(request, 'hostel.html', {'hostel': hostel, 'Location': hostel_id})
 
 def upload(request):
     if request.method == 'POST':
