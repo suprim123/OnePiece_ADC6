@@ -7,15 +7,16 @@
     <title>Update Form </title>
 </head>
 <body>
-    <form method="POST" action="update/{{book.id}}">
+    <form method="POST" action="update/{{Hostel.id}}">
         {% csrf_token %}
-        Update name: <input name="Name" type="text" value={{hostel.name}}> <br>
-        Update location : <input name="text" type="text" value={{hostel.laocation}}> <br>
-        Update price: <input name="price" type="integer" value={{hostel.price}} > <br>
-        Update picture: <input name="file" type="text" value={{hostel.picture}}> <br>
-        Update description: <input name="text" type="text" value={{hostel.description}}> <br>
+        Update Name: <input name="Name" type="text" value={{hostel.Name}}> <br>
+        Update Location : <input name="Location" type="text" value={{hostel.Location}}> <br>
+        Update price: <input name="Price" type="text" value={{hostel.Price}} > <br>
+        <!-- Update Picture: <input name="Picture" type="text" value={{hostel.Picture}}> <br> --><br>
+        Update Description: <input name="Description" type="text" value={{hostel.Description}}> <br>
         <input type="submit">
     </form>
 
 </body>
 </html>
+
