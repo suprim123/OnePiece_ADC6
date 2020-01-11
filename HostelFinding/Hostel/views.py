@@ -4,6 +4,7 @@ from .models import Hostel
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 
+
 def hostel_form(request):
     return render(request,'Hostelform.html')
 
@@ -15,7 +16,6 @@ def hostel_save(request):
         get_Location= request.POST['Location']
         get_Price =request.POST['Price']
         get_Description= request.POST['Description']
-        # get_Picture = request.POST['Picture']
         Hostel_obj = Hostel(Name=get_Name,Location=get_Location,Price=get_Price,Description=get_Description)
         Hostel_obj.save()
         return HttpResponse("Record saved")
@@ -43,7 +43,6 @@ def hostel_update_save(request,ID):
     print(hostel_form_data) 
     hostel_obj.Name = request.POST['Name']
     hostel_obj.Location =request.POST['Location']
-    # hostel_obj. Picture = request.POST['Picture']
     hostel_obj. Price = request.POST['Price']
     hostel_obj. Description = request.POST['Description']
     hostel_obj.save()
@@ -68,6 +67,6 @@ def upload(request):
         uploaded_file = request.FILES['document']
         file_object = FileSystemStorage()
         file_object.save(uploaded_file.name, uploaded_file)
-    return render(request, 'hostelform.html')
+    return render(request, 'upload.html')
     
 
