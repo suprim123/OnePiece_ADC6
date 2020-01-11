@@ -1,8 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Hostel
-from django.views.generic import TemplateView
-from django.core.files.storage import FileSystemStorage
+
 
 def hostel_form(request):
     return render(request,'Hostelform.html')
