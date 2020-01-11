@@ -12,6 +12,7 @@ urlpatterns =[
     path('hostel/delete/<int:ID>',hostel_delete),
     path('search/',search),
     path('upload/',upload),
+    path('download/',download)
     
     
 ]
