@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from .models import Hostel
 from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
+from django.conf import settings
+from django.http import HttpResponse, Http404
 
 
 def hostel_form(request):
@@ -55,7 +57,12 @@ def hostel_delete(request,ID):
         hostel_obj.delete()
         return HttpResponse("Record Delete!!")
 
-
+def search(request):
+        hostel_id = request.GET['location']
+        print(hostel_id)
+        hostel = Hostel.objects.filter(Location__contains=hostel_id)
+        return HttpResponse("TEst")
+        #return render(request, 'hostel.html', {'hostel': hostel, 'Location': hostel_id})
 
 def upload(request):
     if request.method == 'POST':
@@ -65,3 +72,12 @@ def upload(request):
     return render(request, 'upload.html')
     
 
+
+def download(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404
