@@ -88,7 +88,6 @@ def view_register_user(request):
         print(request.POST)
         user = User.objects.create_user(username=request.POST['input_username'],password=request.POST['input_password'],email=request.POST['input_email'])
         user.save()
-        return render(request, "Registration/login.html")
         return HttpResponse("Signup Successful")
 
 
