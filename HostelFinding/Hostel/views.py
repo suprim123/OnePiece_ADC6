@@ -13,7 +13,7 @@ def Hostel_form(request):
     return render(request, 'form.html')
 
 def homepage(request):
-    return render(request,'Registration/indexx.html')
+    return render(request,'')
 
 
 
