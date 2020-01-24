@@ -5,6 +5,7 @@ from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.http import HttpResponse, Http404
+# from django.contrib.auth.models import User
 
 
 def hostel_form(request):
@@ -73,11 +74,21 @@ def upload(request):
     
 
 
-def download(request, path):
-    file_path = os.path.join(settings.MEDIA_ROOT, path)
-    if os.path.exists(file_path):
-        with open(file_path, 'rb') as fh:
-            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-            return response
-    raise Http404
+# def download(request, path):
+#     file_path = os.path.join(settings.MEDIA_ROOT, path)
+#     if os.path.exists(file_path):
+#         with open(file_path, 'rb') as fh:
+#             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+#             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+#             return response
+#     raise Http404
+
+
+# def view_signup_user(request):
+#     if request.method=="GET":
+#      return render(request,'templates/registation/signup.html')
+#     else
+#     print(request.POST)
+#     userobj=User.objects.create_user[username=request.POST['input_username'],password=request.POST['input_password']
+#     userobj.save()
+#     return HttpResponse("Signup Successful")

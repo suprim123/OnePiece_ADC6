@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import *
 from .views import hostel_list
-
 urlpatterns =[   
     path('hostel/',hostel_list), 
     path('hostelform/',hostel_form),
@@ -12,8 +11,8 @@ urlpatterns =[
     path('hostel/delete/<int:ID>',hostel_delete),
     path('search/',search),
     path('upload/',upload),
-    path('download/',download)
-    
+    # path('download/',download),
+    # path('signup/',view_signup_user)
    
     
     

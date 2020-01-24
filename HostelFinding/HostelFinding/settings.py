@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'Hostel/templates'
+            'Hostel/templates/Registation'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
