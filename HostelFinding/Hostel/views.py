@@ -5,15 +5,26 @@ from django.views.generic import TemplateView
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.http import HttpResponse, Http404
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
 
-def hostel_form(request):
-    return render(request,'Hostelform.html')
+
+
+def Hostel_form(request):
+    return render(request, 'form.html')
+
+def homepage(request):
+    return render(request,'')
+
 
 
 
 def hostel_save(request):
-    if request.method== 'POST': 
+    print(request.POST)
+    if request.method == 'POST': 
         get_Name =request.POST['Name']
         get_Location= request.POST['Location']
         get_Price =request.POST['Price']
@@ -70,6 +81,39 @@ def upload(request):
         file_object = FileSystemStorage()
         file_object.save(uploaded_file.name, uploaded_file)
     return render(request, 'upload.html')
+    return render(request, 'hostelform.html')
+
+
+def view_register_user(request):
+    if request.method =="GET":
+        return render(request,'Registration/signup.html')
+    else:
+        print(request.POST)
+        user = User.objects.create_user(username=request.POST['input_username'],password=request.POST['input_password'],email=request.POST['input_email'])
+        user.save()
+        return HttpResponse("Signup Successful")
+
+
+def view_authenticate_user(request):
+    if request.method =="GET":
+        return render (request,'Registration/login.html')
+    else:
+        print(request.POST)
+        user = authenticate(username=request.POST['input_username'],password=request.POST['input_password'])
+        print(user)
+        if user is not None:
+            login(request,user)
+            return render(request,"hostel.html")
+        else:
+            return HttpResponse("Authentication Failed")  
+
+
+def home(request):
+    return render(request,'Registration/home.html ')
+
+def logout(request):
+     auth.logout(request)
+     return render(request,'Registration/home.html') 
     
 
 

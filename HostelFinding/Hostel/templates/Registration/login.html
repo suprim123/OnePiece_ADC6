@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+
+	<title>Login</title>
+	<meta charset="UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!--===============================================================================================-->	
+	<link rel="icon2" type="image/png" href="{% static 'login/images2/favicon.icon2' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts2/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/fonts2/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'login/vendor2/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css2/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/css2/main.css' %}">
+<!--===============================================================================================-->
+<nav>
+	<div class="nav-wrapper">
+	  <a href="#" class="brand-logo">Hostel Finding</a>
+	  <ul id="nav-mobile" class="right hide-on-med-and-down">
+		<li><a href="/home">Home</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/signup">Signup</a></li>
+		<li><a href="/hostelform">HostelForm</a></li>
+		<li>
+			<li>
+				<form action="/logout/" method="POST">
+				{% csrf_token %}
+				<button type = "submit">Logout</button>
+				</form>
+			  </li>
+    </ul>
+  </div>
+</nav>
+</head>
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images1/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Account Login
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" method ="POST">
+                   {% csrf_token %}
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="input_username" placeholder="User name">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="input_password" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+				
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="login/vendor2/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="login/vendor2/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="login/vendor2/bootstrap/js/popper.js"></script>
+	<script src="login/vendor2/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="login/vendor2/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="login/vendor2/daterangepicker/moment.min.js"></script>
+	<script src="login/vendor2/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="login/vendor2/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="login/js2/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<
+<script>
+	
+ul {
+  border: 4px solid #e7e7e7;
+  background-color: #f3f3f3;
+  width 100%;
+  height: 100%;
+}
+nav-wapper{
+	height 100%;
+}
+
+li a {
+  color: #666;
+
+</script>
+</body>
+</html>

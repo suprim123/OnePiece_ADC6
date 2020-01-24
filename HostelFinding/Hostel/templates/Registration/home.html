@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Hostel Finding</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/home">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/signup">Signup</a></li>
+      <li><a href="/hostelform">HostelForm</a></li>
+      <li>
+        <form action="/logout/" method="POST">
+        {% csrf_token %}
+        <button type = "submit">Logout</button>
+        </form>
+      </li>
+      <div class="contact1-pic js-tilt" data-tilt>
+        <img src="../static/images/bg-01.jpg" alt="IMG" style="width:500px; height:550px;">
+        
+			</div>
+      
+    </ul>
+  </div>
+</nav>
+<
+<script>
+  ul {
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  text-align: center;
+}
+
+li a {
+  color: #666;
+}
+
+</script>
+{% block content %}
+
+{% endblock %}
+           
