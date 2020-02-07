@@ -1,16 +1,11 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.http import HttpResponse
 from .models import Hostel
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.decorators import login_required
 
 
-
-
-def Hostel_form(request):
-    return render(request, 'form.html')
 
 def homepage(request):
     return render(request,'')
@@ -18,27 +13,26 @@ def homepage(request):
 
 
 
-def hostel_save(request):
-    print(request.POST)
+def Hostel_form(request):
     if request.method == 'POST': 
         get_Name =request.POST['Name']
         get_Location= request.POST['Location']
         get_Price =request.POST['Price']
         get_Description= request.POST['Description']
-        # get_Picture = request.POST['Picture']
         Hostel_obj = Hostel(Name=get_Name,Location=get_Location,Price=get_Price,Description=get_Description)
         Hostel_obj.save()
-        return HttpResponse("Record saved")
+        return redirect('Hostel:list')
+       
     else:
-        return HttpResponse("Error record saving")
+       return render(request, 'form.html')
 
 
 def hostel_list(request):
     list_of_Hostels= Hostel.objects.all()
-    context_variable = {
-        'Hostel':list_of_Hostels
-    }
-    return render(request,'Hostel.html',context_variable)
+    
+    return render(request,'Hostellist.html',{'hostels':list_of_Hostels})
+
+
 
 def hostel_edit(request, ID):
     hostel_obj = Hostel.objects.get(id=ID)
@@ -48,6 +42,7 @@ def hostel_edit(request, ID):
     return render(request,'Hostelupdateform.html',context_varible)
 
 def hostel_update_save(request,ID):
+    list_of_Hostels= Hostel.objects.all()
     hostel_obj = Hostel.objects.get(id=ID)
     hostel_form_data = request.POST
     print(hostel_form_data) 
@@ -57,14 +52,16 @@ def hostel_update_save(request,ID):
     hostel_obj. Price = request.POST['Price']
     hostel_obj. Description = request.POST['Description']
     hostel_obj.save()
-
+    return redirect('Hostel:list')
     return HttpResponse("Record Updated!!")
 
 
-def hostel_delete(request,ID):
-        hostel_obj= Hostel.objects.get(id=ID)
-        hostel_obj.delete()
-        return HttpResponse("Record Delete!!")
+def hostel_delete(request, ID):
+    hostel = Hostel.objects.get(id=ID)
+    hostel.delete()
+    return redirect('Hostel:list')
+ 
+
 
 def search(request):
         hostel_id = request.GET['location']
@@ -86,8 +83,9 @@ def view_register_user(request):
         return render(request,'Registration/signup.html')
     else:
         print(request.POST)
-        user = User.objects.create_user(username=request.POST['input_username'],password=request.POST['input_password'],email=request.POST['input_email'])
+        user = User.objects.create_user(username=request.POST['username'],password=request.POST['password'])
         user.save()
+        return render (request,'Registration/login.html')
         return HttpResponse("Signup Successful")
 
 
@@ -96,13 +94,13 @@ def view_authenticate_user(request):
         return render (request,'Registration/login.html')
     else:
         print(request.POST)
-        user = authenticate(username=request.POST['input_username'],password=request.POST['input_password'])
+        user = authenticate(username=request.POST['username'],password=request.POST['password'])
         print(user)
         if user is not None:
             login(request,user)
-            return render(request,"hostel.html")
+            return HttpResponseRedirect("/hostellist/")
         else:
-            return HttpResponse("Authentication Failed")  
+           return render (request,'Registration/login.html') 
 
 
 def home(request):
@@ -112,7 +110,8 @@ def logout(request):
      auth.logout(request)
      return render(request,'Registration/home.html')
  
-         
+def hostel_login(request):
+    return render(request,'Registration/login.html')         
         
     
     

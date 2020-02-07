@@ -5,7 +5,9 @@ class Hostel(models.Model):
     Name = models.CharField(max_length=25)
     Price = models.CharField(max_length=7)
     Description = models.TextField()
+    Location = models.TextField()
     addresses = models.ManyToManyField('Location')
+    
 
 
     def __str__(self):

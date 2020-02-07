@@ -1,0 +1,130 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> List Of Hostel </title>
+   <!-- Css Styles -->
+  
+
+  <link href="{% static 'index/https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="{% static 'index/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'index/css/jquery-ui.css' %}">
+   
+    <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
+</head>
+<body>
+  <div class="site-wrap">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+   
+    
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+          
+
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                <li><a href="/home" class="nav-link">Home</a></li>
+                  <li class=""></li>
+                  <li>
+                    <form action="/logout/" method="POST">
+                      {% csrf_token %}
+                      <button type = "submit">Logout</button>
+                      </form>
+                    </li>
+                  
+
+                     
+                  </ul>
+                </li>
+            </nav>
+          </div>
+
+
+          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a></div>
+
+        </div>
+      </div>
+      
+   
+  </div>
+  
+</header> 
+<body>
+    <div class="site-blocks-cover overlay" style="background-image: url(../static/index/images/hero_2.jpg);" >
+    </div>
+            <table class="table table-dark table-hover table-bor">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Location</th>
+                <th scope="col">Button</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for h in hostels %}
+              <tr>
+                <td>{{h.Name}}</td>
+                <td>{{h.Price}}</td>
+                <td>{{h.Description}}</td>
+                <td>{{h.Location}}</td>
+                <td>
+                  <form action="{% url 'Hostel:edit'  h.id %}" method="post">
+                    {%  csrf_token %}
+                    <button>Edit</button></a>
+                  </form>
+                  <br>
+                  <form action="{% url 'Hostel:delete'  h.id %}" method="post">
+                    {%  csrf_token %}
+                    <button>Delete</button></a>
+                  </form>
+                  
+                </td>
+              </tr>
+              {% endfor %}
+            </div>
+            <tbody>
+              
+              
+            
+            </tbody>
+          </table>
+
+        
+          
+             </form>
+            </body>
+  <script src="{% static 'index/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'index/js/popper.min.js' %}"></script>
+  <script src="{% static 'index/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'index/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'index/js/aos.js' %}"></script>
+  <script src="{% static 'index/js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'index/js/jquery.sticky.js' %}"></script>
+  <script src="{% static 'index/js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'index/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -27,10 +27,9 @@
     <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
     
   </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <header class="header-section header-normal">
   
-
-  
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300"></body>
 
 
   <div class="site-wrap">
@@ -50,28 +49,21 @@
       <div class="container">
         <div class="row align-items-center">
           
-          <div class="col-6 col-xl-2">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="h2 mb-0"><span class="text-primary">.</span> </a></h1>
-          </div>
 
           <div class="col-12 col-md-10 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
 
               <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="/home" class="nav-link">Home</a></li>
-                <li class="has-children">
-                  <a href="/signup" class="nav-link">Signin</a>
-                  <ul class="dropdown">
-                    <li><a href="#team-section" class="nav-link">Team</a></li>
-                    <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                    <li><a href="#faq-section" class="nav-link">FAQ</a></li>
-                    <li class="has-children">
-                     
-                  </ul>
-                </li>
-                
-                
-            </nav>
+               <a href="/home" class="nav-link">Home</a>
+                  <a href="/signup" class="nav-link">Signup</a>
+               <li>
+                    <form action="/logout/" method="POST">
+                      {% csrf_token %}
+                      <button type = "submit">Logout</button>
+                      </form>
+                    </li>
+                  </ul> 
+               </nav>
           </div>
 
 
@@ -81,9 +73,6 @@
       </div>
       
     </header>
-
-  
-     
     <div class="site-blocks-cover overlay" style="background-image: url(../static/index/images/hero_2.jpg);" data-aos="fade" id="home-section">
 
       <div class="container">
@@ -123,8 +112,7 @@
           </div>
           <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
             <div class="mb-4">
-              <h3 class="h3 mb-4 text-black">For the next great business</h3>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo tempora cumque eligendi in nostrum labore omnis quaerat.</p>
+              <h3 class="h3 mb-4 text-black">Boys and Girls Hostel</h3>
               
             </div>
             
@@ -132,10 +120,10 @@
               
             <div class="mb-4">
               <ul class="list-unstyled ul-check success">
-                <li>Boys and girls hostel</li>
-                <li>Possimus aut consequuntur incidunt</li>
-                <li>Lorem ipsum dolor sit amet</li>
-                <li>Consectetur adipisicing elit</li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
               </ul>
               
             </div>
