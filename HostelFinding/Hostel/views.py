@@ -29,7 +29,6 @@ def Hostel_form(request):
 
 def hostel_list(request):
     list_of_Hostels= Hostel.objects.all()
-    
     return render(request,'Hostellist.html',{'hostels':list_of_Hostels})
 
 
